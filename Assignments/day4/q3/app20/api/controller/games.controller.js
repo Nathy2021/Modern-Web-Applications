@@ -27,7 +27,7 @@ const getSome = function(req, res){
         });
     }
     else{
-        res.status(500).json({"JSONData":false}); 
+        res.status(500).json({error:"Json size is above the limit"}); 
     }
  
 }
