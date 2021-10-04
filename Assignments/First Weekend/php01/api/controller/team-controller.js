@@ -37,6 +37,7 @@ teamGet = function(req, res){
 }
 
 const _addTeam=function(req, res, fun){
+   
    fun.team.name = req.body.name;
    fun.team.country= req.body.country;
    fun.team.playedYears= req.body.playedYears;
@@ -62,7 +63,7 @@ teamAdd = function(req, res){
         return;
     }
     const funId = req.params.funId;
-    BadmintonFun.findById(funId).select("publisher").exec(function(err, fun){
+    BadmintonFun.findById(funId).select("team").exec(function(err, fun){
         if(err){
             console.log("error finding");
             res.status(500).json(err);
@@ -75,6 +76,9 @@ teamAdd = function(req, res){
                 return;
             }
             else{
+                if(!(fun.team)){
+                    fun.team= {name:"empty", country:"empty", playedYears: {}}
+                }
                 _addTeam(req, res, fun);
             }
 
@@ -87,6 +91,7 @@ teamAdd = function(req, res){
 
 const _updateTeam = function(req, res, fun)
 {
+    
     fun.team.name=req.body.name;  
     fun.team.country = req.body.country;
     fun.team.playedYears = parseInt(req.body.playedYears);
@@ -123,7 +128,10 @@ teamUpdate = function(req, res){
                 console.log("Not found");
                 res.status(404).json({"message":"fun ID not found"});
             }
-            else{                
+            else{   
+                if(!(fun.team)){
+                    fun.team= {name:"empty", country:"empty", playedYears: {}}
+                }             
                 _updateTeam(req, res, fun);
             }
         }

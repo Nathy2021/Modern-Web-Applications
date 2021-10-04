@@ -11,7 +11,8 @@ router.route("/badmintonfuns/:funId")
     .put(badmintonFunsController.updateFun)    
     .delete(badmintonFunsController.deletedFun);
 router.route("/badmintonfuns/:funId/team")
-        .get(teamController.getTeam)        
+        .get(teamController.getTeam)  
+        .post(teamController.teamAdded)     
         .put(teamController.updateTeam)
         .delete(teamController.deletedTeam);
 

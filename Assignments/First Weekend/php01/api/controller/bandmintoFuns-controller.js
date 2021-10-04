@@ -9,8 +9,8 @@ getAll = function(req, res){
     console.log("Json Request Received!");
 
     let offset = 0;
-    let count = 3; //default
-    
+    let count = 2; //default
+    const maxCount = 3;
     if(req.query && req.query.offset){
         offset=parseInt(req.query.offset, 10);
     }
@@ -19,6 +19,11 @@ getAll = function(req, res){
         count=parseInt(req.query.count, 10);
        
     }
+    if(count > maxCount){
+        res.status(400).json({"message":"Can't exceed count of "+maxCount});
+        retun;
+    }
+
 
     if(isNaN(offset)||isNaN(count)){
         res.status(400).json({"messagae": "QueryString offset and count should be numbers."});
@@ -62,12 +67,11 @@ getOne=function(req, res){
         }
         else{
             if(!fun){
-                console.log("game is not found!");
+                console.log("Fun by the ID is not found!");
                 res.status(404).json(fun);
                 return;
             }
-            else{
-                console.log("found game");
+            else{                           
                 res.status(200).json(fun);
             }
 
@@ -84,26 +88,25 @@ addOne= function(req, res){
         return; 
 
     }
-    else
-    {      
-        const newFun = {
-            country: req.body.country,
-            startYear: req.body.startYear,
-            playerName: req.body.playerName
-        };
+        
+    const newFun = {
+        country: req.body.country,
+        startYear: req.body.startYear,
+        playerName: req.body.playerName
+    };
 
-       BadmintonFun.create(newFun, function(err, fundata){
-            if(err){
-                console.log("Not adding a new fun");
-                res.status(500).json(err);
-                return;
-            }
-            else{
-                console.log("new fun created!");
-                res.status(201).json(fundata);
-            }
-        });
-    }
+    BadmintonFun.create(newFun, function(err, funData){
+        if(err){
+            console.log("Not adding a new fun");
+            res.status(500).json(err);
+             return;
+        }
+        else{
+        console.log("new fun created!");
+            res.status(201).json(funData);
+        }
+    });
+    
 };
 
 updateFun = function(req, res){
