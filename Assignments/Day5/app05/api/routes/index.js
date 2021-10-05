@@ -21,7 +21,12 @@ router.route("/games/:gameId/publisher")
         .delete(controllerPublisher.deletedPublisher);
 
 router.route("/games/:gameId/reviews")
-.get(controllerReviews.reviewsGetAll);
+        .get(controllerReviews.reviewsGetAll)
+        .post(controllerReviews.addReview);
 
+router.route("/games/:gameId/reviews/:reviewId")
+        .get(controllerReviews.reviewGetOne)
+        .put(controllerReviews.updateReview)
+        .delete(controllerReviews.deleteReview);
 
 module.exports = router;

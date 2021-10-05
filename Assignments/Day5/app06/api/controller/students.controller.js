@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Student = mongoose.model("Student"); //"Game"
+const Student = mongoose.model("Student"); 
 
 const ObjectId = require("mongodb").ObjectId;
 

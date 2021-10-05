@@ -4,12 +4,12 @@ const BadmintonFun = mongoose.model("BadmintonFun");
 const ObjectId = require("mongodb").ObjectId;
 
 
-getAll = function(req, res){
+const getAll = function(req, res){
 
     console.log("Json Request Received!");
 
     let offset = 0;
-    let count = 2; //default
+    let count = 3; //default
     const maxCount = 3;
     if(req.query && req.query.offset){
         offset=parseInt(req.query.offset, 10);
@@ -49,7 +49,7 @@ getAll = function(req, res){
     });     
 }
 
-getOne=function(req, res){
+const getOne=function(req, res){
      
     if(!mongoose.isValidObjectId(req.params.funId)){
         
@@ -79,7 +79,7 @@ getOne=function(req, res){
     });  
 };
 
-addOne= function(req, res){   
+const addOne= function(req, res){   
         
     if(!(req.body && req.body.country && req.body.startYear && req.body.playerName)){
     
@@ -109,7 +109,7 @@ addOne= function(req, res){
     
 };
 
-updateFun = function(req, res){
+const updateFun = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){        
         res.status(400).json({"message":"invalid fun id passed."});
         return;
@@ -145,8 +145,7 @@ updateFun = function(req, res){
     });
 };
 
-
-deleteOne = function(req, res){
+const deleteOne = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){
         console.log("Invalid id!");
         res.status(400).json({"message":"invalid fun id passed."});

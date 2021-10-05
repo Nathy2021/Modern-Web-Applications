@@ -1,18 +1,18 @@
 // setting connection, mongoose driver
-
+require("dotenv").config({"path":".env"});
 const mongoose = require("mongoose");
 // compile model, let know about the model
 require("./school-model.js");
-const dbName = "SchoolDB";
-const dbUrl = "mongodb://localhost:27017/SchoolDB";
+const dbName = process.env.DATABASE_NAME;
+const dbUrl = process.env.DATABASE_URL;
 
 // mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology:true});
-mongoose.connect(dbUrl);
+mongoose.connect(dbUrl+dbName);
 
 
 //connect
 mongoose.connection.on("connected", function(){
-    console.log("Mongoose connected to " +dbUrl);
+    console.log("Mongoose connected to " +dbName);
 });
 mongoose.connection.on("disconnected", function(){
     console.log("Mongoose disconnedted");

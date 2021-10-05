@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const BadmintonFun = mongoose.model("BadmintonFun"); 
 
-const ObjectId = require("mongodb").ObjectId;
-
-
-teamGet = function(req, res){
+const getAllTeams = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){
         console.log("Invalid id!");
         res.status(400).json({"message":"invalid team id passed."});
@@ -36,16 +33,54 @@ teamGet = function(req, res){
 
 }
 
+const getOneTeam = function(req, res){
+    if(!mongoose.isValidObjectId(req.params.funId)){
+        console.log("Invalid id!");
+        res.status(400).json({"message":"invalid fun id passed."});
+        return;
+    }
+    if(!mongoose.isValidObjectId(req.params.reviewId)){
+        console.log("Invalid id!");
+        res.status(400).json({"message":"invalid fun id passed."});
+        return;
+    }
+    const funId = req.params.funId;
+    const teamId = req.params.teamId;
+    
+    
+    BadmintonFun.findById(funId).select("team").exec(function(err, fun){
+        const team= fun.team.id(teamId);        
+        if(err){
+            res.status(500).json(error);
+        }
+        else{
+            if(!fun){
+                res.status(404).json({"message":"team Id not found "})
+            }
+            else{
+                res.status(200).json(team);
+            }
+        }
+        
+    });
+}
+
 const _addTeam=function(req, res, fun){
-   
-   fun.team.name = req.body.name;
-   fun.team.country= req.body.country;
-   fun.team.playedYears= req.body.playedYears;
-   
-   fun.save(function(err, updatedFun){
+    
+    const newTeam ={
+        name: req.body.name,
+        country: req.body.country,
+        playedYears: req.body.playedYears
+
+    };
+
+    //const newTeam = req.body;
+    fun.team.push(newTeam);  
+
+    fun.save(function(err, updatedFun){
      
         if(err){
-          
+            console.log("error saving team");
             res.status(500).json(err);
         }
         else{
@@ -56,7 +91,7 @@ const _addTeam=function(req, res, fun){
    });
 };
 
-teamAdd = function(req, res){
+const teamAdd = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){
         console.log("Invalid id!");
         res.status(400).json({"message":"invalid fun id passed."});
@@ -84,35 +119,54 @@ teamAdd = function(req, res){
 
         }
         
-    });    
-
-
+    });   
 };
 
 const _updateTeam = function(req, res, fun)
 {
-    
-    fun.team.name=req.body.name;  
-    fun.team.country = req.body.country;
-    fun.team.playedYears = parseInt(req.body.playedYears);
 
-    fun.save(function(err, updateFun){
-        if(err){
-            console.log("error finding fun");
-            res.status(500).json(err);
+    const teamId = req.params.teamId;   
+    let len = fun.team.length
+    let index = -1;
+    for (let i = 0; i < len; i++) {
+        if (fun.team[i].id === teamId) {
+            index = i
+            break;
         }
-        else{
-            if(!updateFun){
-                res.status(404).json({"message":"No fun Id"});
-            }
-            else{
-                res.status(201).json(updateFun.team);
-            }
+    }
+    var insertIdx;
+    if (index != -1) {
+        insertIdx = index
+    } else {
+        insertIdx = fun.team.length
+    }
+    
+    fun.team[insertIdx] = { 
+        name: req.body.name, country: req.body.country, playedYears : req.body.playedYears 
+   
+    }     
+               
+    fun.save(function(err, fun){
+        if(err)
+        {
+            console.log("error finding team");
         }
+        else
+            {
+                if(!fun)
+                {
+                    res.status(404).json({"message":"No team Id"});
+                }
+                else
+                {
+                    res.status(201).json(fun.team[insertIdx]);
+                }
+            }
     });
+  
 };
 
-teamUpdate = function(req, res){
+const teamUpdate = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){
         res.status(400).json({"message":"invalid fun id passed."});
         return;
@@ -135,23 +189,44 @@ teamUpdate = function(req, res){
                 _updateTeam(req, res, fun);
             }
         }
-    });
+    });      
 
 };
 
 const _deleteTeam = function(req, res, fun){
-    fun.team.remove();
+    
+    const teamId = req.params.teamId;   
+    let len = fun.team.length
+    let index = -1;
+
+    for (let i = 0; i < len; i++) {
+        if (fun.team[i].id === teamId) {
+            index = i
+            break;
+        }
+    }
+
+    var insertIdx;
+    if (index != -1) {
+        insertIdx = index
+    } else {
+        insertIdx = fun.team.length
+    }    
+
+    fun.team.splice(index,1);
+    
     fun.save(function(err, fun){
         if(err){
             res.status(500).json(err);
         }
         else{
-            res.status(204).json(fun.team);
+            res.status(204).json(fun.team[insertIdx]);
         }
-    });    
+    });  
+    
 };
 
-teamDelete = function(req, res){
+const teamDelete = function(req, res){
     if(!mongoose.isValidObjectId(req.params.funId)){
         res.status(400).json({"message":"invalid fun id passed."});
         return;
@@ -173,7 +248,8 @@ teamDelete = function(req, res){
 };
 
 module.exports={
-    getTeam: teamGet,
+    getOneTeam: getOneTeam,
+    getAllTeams: getAllTeams,
     teamAdded: teamAdd,
     updateTeam:teamUpdate,
     deletedTeam: teamDelete

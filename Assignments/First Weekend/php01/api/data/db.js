@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
+require("dotenv").config({"path":".env"});
 require("./badmintonFun-model.js");
-const dbUrl = "mongodb://localhost:27017/PhPDB";
-mongoose.connect(dbUrl);
+
+const dbName = process.env.DATABASE_NAME;
+const dbUrl = process.env.DATABASE_URL;
+mongoose.connect(dbUrl+dbName);
 
 
 //connect

@@ -12,7 +12,14 @@ router.route("/students/:studentId")
         .put(controllerStudents.updateStudentData)
         .delete(controllerStudents.deletedStudent);
 
-router.route("/students/:studentId/courses").get(controllerCourses.getCourses);
-router.route("/students/:studentId/courses/:courseId").get(controllerCourses.courseGetOne);
+router.route("/students/:studentId/courses")
+        .get(controllerCourses.getCourses)
+        .post(controllerCourses.addCourse);
+         
+router.route("/students/:studentId/courses/:courseId")
+        .get(controllerCourses.courseGetOne)
+        .put(controllerCourses.updateCourse)
+        .delete(controllerCourses.courseDelete);
+        
 
 module.exports = router;

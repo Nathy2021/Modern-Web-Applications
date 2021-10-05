@@ -39,21 +39,19 @@ publisherGet = function(req, res){
 const _addPublisher=function(req, res, game){
    game.publisher.name = req.body.name;
    game.publisher.country= req.body.country;
-   //game.publisher.location.coordinates = [parseFloat(req.body.lng), parseFloat(req,body.lat)];
+    
    game.save(function(err, updatedGame){
-        // const response ={status: 200, message: []};
+      
         if(err){
-            // response.status=500;
-            // response.message = err;
+ 
             res.status(500).json(err);
         }
         else{
-            // response.status= 201;
-            // response.message=updatedGame.publisher;
+            
             res.status(201).json(updatedGame.publisher);
 
         }
-        // res.status(response.status).json(response.message);
+        
    });
 };
 
@@ -82,36 +80,7 @@ publisherAdd = function(req, res){
 
         }
         
-    });  
-
-    // if(!(req.body && req.body.title && req.body.price && req.body.minAge)){
-    
-    //     console.log("Data missing from Post body");
-    //     res.status(400).json({error:"Required data missing from POST"});  
-    //     return; 
-
-    // }
-    // else
-    // {      
-
-    //     const newGame = {
-    //         title: req.body.title,
-    //         price: req.body.price,
-    //         minAge: req.body.minAge
-    //     };
-
-    //     Game.create(newGame, function(err, response){
-    //         if(err){
-    //             console.log("Not creating a new game");
-    //             res.status(500).json(err);
-    //             return;
-    //         }
-    //         else{
-    //             console.log("new game created!");
-    //             res.status(201).json(response);
-    //         }
-    //     });
-    // }
+    });   
 
 
 };
@@ -120,8 +89,7 @@ const _updatePublisher = function(req, res, game)
 {
     game.publisher.name = req.body.name;
     game.publisher.country = req.body.country;
-
-    //game.publisher.location.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+        
     game.save(function(err, updateGame){
         if(err){
             console.log("error finding game");

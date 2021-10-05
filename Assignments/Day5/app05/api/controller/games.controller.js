@@ -74,7 +74,7 @@ const getOne=function(req, res){
 };
 
  
-addOne= function(req, res){    
+const addOne= function(req, res){    
     
     if(!(req.body && req.body.title && req.body.price && req.body.minAge)){
     
@@ -107,7 +107,7 @@ addOne= function(req, res){
 };
 
 
-updateGame = function(req, res){
+const updateGame = function(req, res){
     if(!mongoose.isValidObjectId(req.params.gameId)){
         console.log("Invalid id!");
         res.status(400).json({"message":"invalid game id passed."});
@@ -143,12 +143,13 @@ updateGame = function(req, res){
     });
 };
  
-deleteOne = function(req, res){
+const deleteOne = function(req, res){
     if(!mongoose.Types.ObjectId.isValid(req.params.gameId)){
         console.log("Invalid id!");
         res.status(400).json({"message":"invalid game id passed."});
         return;
     }
+
     const gameId = req.params.gameId;
     Game.findByIdAndRemove(gameId).select("-reviews -publisher").exec(function(err, deletedGame){
         if(err){

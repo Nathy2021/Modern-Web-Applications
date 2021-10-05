@@ -30,7 +30,7 @@ const badmintonFunSchema = new mongoose.Schema({
         type: String,
        required: true 
     },
-    team:teamSchema
+    team:[teamSchema]
  
 });
 mongoose.model("BadmintonFun", badmintonFunSchema, "badmintonFuns");

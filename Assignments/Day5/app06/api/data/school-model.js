@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 //Nested Docs, review is sub document 
 const courseSchema = new mongoose.Schema({
     id: {
-        type: String,
+        type: Number,
         required: false
     }, 
     name: {

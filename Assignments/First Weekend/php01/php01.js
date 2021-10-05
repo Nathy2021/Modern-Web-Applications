@@ -1,3 +1,5 @@
+require("dotenv").config({"path":".env"})
+
 const express = require("express");
 const path = require("path");
 
@@ -5,7 +7,7 @@ require("./api/data/db");
 const routes = require("./api/routes");
 
 const app = express();
-app.set("port", 3000);
+app.set("port", process.env.PORT);
 
 //middleware
 app.use(function(req, res, next){
