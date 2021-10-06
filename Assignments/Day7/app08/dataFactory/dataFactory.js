@@ -11,7 +11,7 @@ function breweryFactory($http){
         .then(complete).catch(failed)
     }
     function getOne(breweryId){
-        return $http.get("https://api.openbrewerydb.org/breweries"+breweryId)
+        return $http.get("https://api.openbrewerydb.org/breweries/"+breweryId)
         .then(complete).catch(failed)
     }
 

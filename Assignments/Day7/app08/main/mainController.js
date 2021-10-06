@@ -5,6 +5,6 @@ function MainController(breweryFactory){
 
     breweryFactory.get("https://api.openbrewerydb.org/breweries")
         .then(function(response){
-            vm.jokes = response.data
+            vm.breweries = response.data
         })
 }
