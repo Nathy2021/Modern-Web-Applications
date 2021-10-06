@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myPropperApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--This is beginning index.html page -->
+    <div ng-view>
+
+    </div>
+    <!--This is end of index.html -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+    <script src="./about/aboutController.js"></script>
+    <script src="./main/mainController.js"></script>
+    <script src="./posts/postsController.js"></script>
+    <script src="./dataFactory/dataFactory.js"></script>
+    <script src="./post/postController.js"></script>
+</body>
+
+</html>
