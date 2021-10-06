@@ -10,14 +10,14 @@ function config($routeProvider){
         templateUrl:"./about/about.html",
         controller: "AboutController",
         controllerAs: "aboutCtrl"
-    }).when('/posts', {
-        templateUrl:"./posts/posts.html",
-        controller: "PostsController",
-        controllerAs: "postsCtrl"
-    }).when('/posts/:postId', {
-        templateUrl:"./post/post.html",
-        controller: "PostController",
-        controllerAs: "postCtrl"
+    }).when('/breweries', {
+        templateUrl:"./breweries/breweries.html",
+        controller: "breweriesController",
+        controllerAs: "breweriesCtrl"
+    }).when('/breweries/:breweryId', {
+        templateUrl:"./brewery/brewery.html",
+        controller: "breweryController",
+        controllerAs: "breweryCtrl"
     }).otherwise({
         redirectTo:"/"
     })

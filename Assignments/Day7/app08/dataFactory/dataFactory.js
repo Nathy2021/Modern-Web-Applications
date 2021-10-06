@@ -1,18 +1,17 @@
-angular.module("myPropperApp").factory("PostFactory", PostFactory)
+angular.module("myPropperApp").factory("breweryFactory", breweryFactory)
 
-function PostFactory($http){
+function breweryFactory($http){
     return {
-        getAllPosts:getAll,
-        getOnePost: getOne
+        getAllbreweries:getAll,
+        getOnebrewery: getOne
     }
     function getAll(){
-        //return $http.get("https://jsonplaceholder.typicode.com/posts")
+        
         return $http.get("https://api.openbrewerydb.org/breweries")
         .then(complete).catch(failed)
     }
-    function getOne(postId){
-        //return $http.get("https://jsonplaceholder.typicode.com/posts/" + postId)
-        return $http.get("https://api.openbrewerydb.org/breweries"+postId)
+    function getOne(breweryId){
+        return $http.get("https://api.openbrewerydb.org/breweries"+breweryId)
         .then(complete).catch(failed)
     }
 
