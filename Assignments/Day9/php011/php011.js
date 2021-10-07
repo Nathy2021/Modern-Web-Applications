@@ -15,6 +15,10 @@ app.use(function(req, res, next){
     next();
 });
 
+// app.use("/node_modules",express.static(path.join(__dirname, "node_modules")))
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended:false}));
 

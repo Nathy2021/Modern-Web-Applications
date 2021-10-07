@@ -2,7 +2,7 @@ angular.module("badmintonFuns", ["ngRoute"]).config(config)
 
 function config($routeProvider){
     $routeProvider.when("/", {
-        templateUrl: "angularjs-app/main/welcome.html",
+        templateUrl: "./angularjs-app/main/welcome.html"
         
     }).when("/badmintonfuns", {
         templateUrl : "angularjs-app/funs-list/funs.html",

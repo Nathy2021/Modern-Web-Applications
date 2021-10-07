@@ -1,0 +1,15 @@
+<h1> Information about: {{vm.fun.playerName}} </h1>
+<p>
+    Start Year: {{vm.fun.startYear}} <br>
+    Country: {{vm.fun.country}} <br>
+    Played Teams:
+            <ul>
+                <li ng-repeat="team in vm.fun.team">
+                    {{team.name|firstLetter}}        
+        </li>
+    </ul>   
+
+    
+
+</p>
+<p style="text-align: center;"><a ng-href="#/badmintonfuns">Home</a></p>

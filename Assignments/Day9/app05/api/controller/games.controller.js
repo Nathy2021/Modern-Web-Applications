@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
-const Game = mongoose.model("Game"); 
+const Game = mongoose.model("Game"); //"Game"
 
+const ObjectId = require("mongodb").ObjectId;
 
 getAll = function(req, res){
 
     console.log("Json Request Received!");
 
     let offset = 0;
-    let count = 8;
+    let count = 6;
     const  maxCount = 9;
 
     if(req.query && req.query.offset){

@@ -11,7 +11,6 @@ function FunsFactory($http){
         .then(complete).catch(failed)
        
     }
-
     function getOne(funId){
         return $http.get("/api/badmintonfuns/"+ funId)
             .then(complete).catch(failed)
