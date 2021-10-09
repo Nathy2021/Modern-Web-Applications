@@ -1,0 +1,20 @@
+<h1>Information about the job: {{vm.job.title}}
+    <!-- <p>{{vm.job.title}} <job-rating> </job-rating>
+        </p> -->
+        <!-- {{vm.job.title}}  -->
+        
+</h1>
+<p>
+    Salary: {{vm.job.salary}}<br>
+    Description: {{vm.job.description}}<br>   
+    Experience: {{vm.job.experience}} <br>    
+    Post Date: {{vm.job.postDate}} <br>
+    Skill: {{vm.job.skill[0]}} <br>
+    <!-- Minimum Age: {{vm.Job.minAge}} <br>
+    Publisher : {{vm.Job.Publisher.name}}<br> -->
+
+</p>
+<p style="color:red;"> {{vm.message}}</p>
+<p style= text-align:left;><a ng-href="#/jobs">Home</a> <button type="button" class="delete" ng-click="vm.deleteJob()" style=background:red;>Delete</button></p>
+
+<!-- <p style= "text-align: right"> <button type="button" class="delete" ng-click="vm.deleteJob()" >Delete</button> </p> -->

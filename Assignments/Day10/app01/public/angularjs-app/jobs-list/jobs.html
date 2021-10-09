@@ -1,0 +1,30 @@
+<h1>{{vm.title}}</h1>
+<label>Enter Job name: <input ng-model="enterText"></label>
+<ul>
+    <!-- <li ng-repeat="job in vm.jobs | orderBy: 'title'"> -->
+    <li ng-repeat="job in vm.jobs | filter: enterText">
+        <!-- <a ng-href="#!/job/{{job._id}}">{{job.title}}</a> -->
+        <!-- <a href="#/job/{{job._id}}">{{job.title}}</a>  -->      
+     <!-- <p>{{job.title}} <a href="#/job/{{job._id}}">Details</a> <button type="button" class="delete" ng-click="vm.deleteJobFromJobs({{job._id}})" style=background:red;>Delete</button></p> -->
+     <p>{{job.title}} <a href="#/job/{{job._id}}">Details</a> </p>
+    </li>
+</ul>
+
+<button type="button" class="btn-success" ng-click="vm.previous()">  Previous </button>
+<button type="button" class="btn-success" ng-click="vm.next()">  Next </button>
+
+
+<form name="vm.jobForm" ng-submit="vm.addJob()">
+    To add a new Job please fill in all the fields below:<BR />
+    Title: <input type="text" name="title" required ng-model="vm.newJobTitle" style="color:black" /><BR /> 
+    Salary: <input type="number" name="salary" required ng-model="vm.newJobSalary" style="color:black" /><BR />
+    Description: <input type="text" name="description" required ng-model="vm.newJobDescription" style="color:black" /><BR />
+    Experience: <input type="number" name="experience" required ng-model="vm.newJobExperience" style="color:black" /><BR />
+    Skill: <input type="text" name="skill[]" required ng-model="vm.newJobSkill" style="color:black" /><BR />   
+    Posted Date: <input type="date" name="date" required ng-model="vm.newJobDate" style="color:black" /><BR />
+    Location: <BR/>
+    <label>Address</label><input type="text" name="address" required ng-model="vm.newAddress" style="color:black" /><BR />
+              <label>Zip Code</label><input type="text" name="zipcode" required ng-model="vm.newZipCode" style="color:black" /><BR />
+              <label>Phone number</label><input type="text" name="phonenumber" required ng-model="vm.newPhoneNumber" style="color:black" /><BR />
+    <button type="submit" class="btn-success">Add Job</button><BR />
+</form>
