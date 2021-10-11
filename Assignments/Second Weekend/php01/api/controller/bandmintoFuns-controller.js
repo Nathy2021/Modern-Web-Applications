@@ -158,7 +158,7 @@ const updateFun = function(req, res){
 
       BadmintonFun.findOneAndUpdate(funId, funUpdate, returnUpdated,  function(error, result){
         if(error){
-            console.log("unable to update music")
+            console.log("unable to update fun")
         }
         else{
             console.log("fun updated");

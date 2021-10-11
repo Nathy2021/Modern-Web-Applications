@@ -12,7 +12,7 @@ function MainController(UserFactory, $routeParams, $window, $route) {
     UserFactory.addUser(newUser).then(function (err, response) {
 
       if(!response){
-        //console.log("New User registred", response.status);
+        
         $window.location.href="#/login"  
     }
     else{

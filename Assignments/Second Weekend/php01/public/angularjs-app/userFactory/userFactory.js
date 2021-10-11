@@ -10,7 +10,7 @@ function UserFactory($http){
     function addUser(newUser){
         console.log("inside add user")
         return $http.post("/api/users/register", newUser)
-            .then(complete).catch(fail)
+            .then(complete).catch(failed)
     }
 
     function login(user){

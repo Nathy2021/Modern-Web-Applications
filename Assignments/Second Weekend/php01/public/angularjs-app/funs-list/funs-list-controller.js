@@ -31,13 +31,13 @@ function FunsController(FunsFactory, $routeParams, $window, $route){
             console.log("fun 11 inside  saved!")
             FunsFactory.addOneFun(postFun).then(function (response) {
                 console.log("fun 11 inside  saved!", response);
-            //    $window.location.href = "#/badmintonfuns";
+                $window.location.href = "#/badmintonfuns";
                 $route.reload();
                 // $window.location.href = "#!/jobs";            
             });
         }
         else {
-            //vm.isSubmitted=true;
+             
             console.log("provided incorrect data");
         }
     }

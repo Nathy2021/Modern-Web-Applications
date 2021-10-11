@@ -1,6 +1,6 @@
 <h1>{{vm.title}}</h1>
 <label>Enter team name: <input ng-model="enterText"></label>
-<!-- <li ng-repeat="fun in vm.jobs | filter: enterText"></li> -->
+
 <ul>
     <li ng-repeat="fun in vm.funs | filter: enterText">
             <a href="#/badmintonfun/{{fun._id}}">{{fun.country}}</a>
@@ -19,8 +19,6 @@
     <label>Name</label><input type="text" name="name" required ng-model="vm.newName" style="color:black" /><BR />
               <label>Country</label><input type="text" name="country" required ng-model="vm.newCountry" style="color:black" /><BR />
               <label>Played Years</label><input type="number" name="playedYears" required ng-model="vm.newPlayedYears" style="color:black" /><BR />
-    <!-- Skill: <input type="text" name="skill[]" required ng-model="vm.newJobSkill" style="color:black" /><BR />    -->
-
     
     <button type="submit" class="btn-success">Add Fun</button><BR />
 </form>
