@@ -1,0 +1,26 @@
+<h1>{{vm.title}}</h1>
+<label>Enter team name: <input ng-model="enterText"></label>
+<!-- <li ng-repeat="fun in vm.jobs | filter: enterText"></li> -->
+<ul>
+    <li ng-repeat="fun in vm.funs | filter: enterText">
+            <a href="#/badmintonfun/{{fun._id}}">{{fun.country}}</a>
+    
+    </li>
+</ul>
+<button type="button" class="btn-success" ng-click="vm.previous()">  Previous </button>
+<button type="button" class="btn-success" ng-click="vm.next()">  Next </button>
+
+<form name="vm.funForm" ng-submit="vm.addFun()">
+    To add a new Job please fill in all the fields below:<BR />
+    Country: <input type="text" name="country" required ng-model="vm.newFunCountry" style="color:black" /><BR /> 
+    Start Year: <input type="number" name="startYear" required ng-model="vm.newFunStartYear" style="color:black" /><BR />
+    Player Name: <input type="text" name="playerName" required ng-model="vm.newFunPlayerName" style="color:black" /><BR />
+    Teams: <BR/>
+    <label>Name</label><input type="text" name="name" required ng-model="vm.newName" style="color:black" /><BR />
+              <label>Country</label><input type="text" name="country" required ng-model="vm.newCountry" style="color:black" /><BR />
+              <label>Played Years</label><input type="number" name="playedYears" required ng-model="vm.newPlayedYears" style="color:black" /><BR />
+    <!-- Skill: <input type="text" name="skill[]" required ng-model="vm.newJobSkill" style="color:black" /><BR />    -->
+
+    
+    <button type="submit" class="btn-success">Add Fun</button><BR />
+</form>

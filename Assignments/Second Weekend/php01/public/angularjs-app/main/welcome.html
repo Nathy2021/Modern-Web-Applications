@@ -1,0 +1,15 @@
+<h1>Welcome to Badminton Fun App </h1>
+<div ><button style="text-align: right;" ng-click="vm.login()" class="btn-success" >Login</button></div>
+
+<form   class="col-sm-6" name="vm.funForm" ng-submit="vm.addFun()">
+    
+<fieldset class="border p-2">
+        <legend >Register</legend>
+<div class="container-fluid">
+    Username: <input type="text" required ng-model="vm.userName" /></br>
+    Name:      <input type="text" required ng-model="vm.name" /></br>
+    Password:  <input type="text"  required ng-model="vm.userPassword" /></br>
+    <button ng-click="vm.register()">Register</button>
+  </div>
+</fieldset>
+</form>

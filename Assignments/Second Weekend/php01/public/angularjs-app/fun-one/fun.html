@@ -1,0 +1,33 @@
+<h1> Information about: {{vm.fun.playerName}} </h1>
+<p>
+    Player Name: {{vm.fun.playerName}} <br />
+    Start Year: {{vm.fun.startYear}} <br>
+    Country: {{vm.fun.country}} <br>
+    Played Teams:
+<ul>
+    <li ng-repeat="team in vm.fun.teams ">
+        {{team.name}}
+    </li>
+</ul>
+<p style="color:red;"> {{vm.message}}</p>
+<p style="text-align: right;"><a ng-href="#/badmintonfuns">Home</a> <button type="button" class="delete"
+        ng-click="vm.deleteFun()" style=background:red;>Delete</button></p>
+
+</p>
+
+<form class="col-sm-6" name="vm.funForm" ng-submit="vm.updateFun()">
+    <fieldset class="border p-2">
+        <div class="form-group column">
+
+            <legend>Update Fun</legend>
+
+            Player Name: <input type="text" required ng-model="vm.uPlayerName" /> <br/>
+            Start Year: <input type="number" required ng-model="vm.uStartYear" /><br/>
+            Country: <input type="text"  ng-model="vm.uCountry" /><br/>
+
+            Played Teams: <br/>
+            <button type="submit" class="btn-success">Update Fun</button>
+
+        </div>
+    </fieldset>
+</form>

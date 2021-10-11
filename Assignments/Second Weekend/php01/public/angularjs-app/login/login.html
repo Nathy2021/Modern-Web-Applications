@@ -1,0 +1,15 @@
+<h1>Welcome to Music Genre</h1> <div class="col-sm-6">
+
+  <button ng-click = "vm.register()" class="btn-success" >Register</button></div>
+
+<form   class="col-sm-6" name="vm.musicForm" ng-submit="vm.addMusic()">
+    
+    <fieldset class="border p-2">
+        <legend >Login</legend>
+<div class="container-fluid">
+    Username: <input type="text" required  ng-model="vm.userName" /></br>
+    Password: <input type="text"  required ng-model="vm.userPassword" /></br>
+    <button ng-click="vm.login()">Login</button>
+  </div>
+</fieldset>
+</form>
