@@ -1,0 +1,74 @@
+<h1>{{vm.title}}</h1>
+
+<ul>
+    <li ng-repeat="game in vm.games | orderBy: 'title'">
+        <!-- <a ng-href="#!/game/{{game._id}}">{{game.title}}</a> -->
+        <a href="#!/game/{{game._id}}">{{game.title}}</a>
+    
+    </li>
+</ul>
+
+<!-- <div class="tableClass">
+    <table>
+        <tr>
+            <th class="rowClasss">title</th>
+            <th class="rowClas">details</th>
+            <th class="rowClas">delete</th>
+        </tr>
+        <tr ng-if="vm.nodataFound">
+            <td colspan="7">No Data Found</td>
+        </tr>
+        <tr ng-if="!vm.nodataFound" ng-repeat="job in vm.jobs | filter:vm.stitle">
+            <td>{{job.title}}</td>
+            <td> <a ng-href="#!/{{job._id}}"> details </a></td>
+            <td>
+                <a href="#!/delete/{{job._id}}" class="rowClassd">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div> -->
+
+<!-- .tableClass{
+    padding-top: 2em;
+    
+ }
+ .rowClasss{
+     padding-left: 50px;
+     padding-right: 550px;
+     background-color:burlywood;
+ }
+ .rowClas{
+    
+     background-color:burlywood;
+ }
+ .rowClassd{
+     color: red;
+ } -->
+
+<form name="vm.gameForm" ng-submit="vm.addGame()">
+    To add a new game please fill in all the fields below:<BR />
+    Title: <input type="text" name="title" required ng-model="vm.newGameTitle" style="color:black" /><BR />
+    Price: <input type="text" name="price" required ng-model="vm.newGamePrice" style="color:black" /><BR />
+    <button type="submit" class="btn-success">Add Game</button><BR />
+</form>
+
+
+<form name="vm.gameForm2">
+
+    To add anew game please fill in all the field below. <br />
+        
+    Longitude : <input type="text" name="longitude" required ng-model="vm.publisherLng" style="color: black"
+    
+    /><br />
+   
+    Latitude : <input type="text" name="latitude" required ng-model="vm.publisherLat"   
+    style="color: black" /><br />      
+    Distance : 
+    <input type="text" name="distance" required ng-model="vm.maxDistance" style="color: black"
+    
+    /><br />
+    
+    <button class="btn-success" ng-click="vm.searchPublisher()">Search</button>  
+    </form>
+    
+    

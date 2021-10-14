@@ -1,0 +1,26 @@
+{
+  "name": "app05",
+  "version": "1.0.0",
+  "description": "MEAN Game ",
+  "main": "app05.js",
+  "scripts": {
+    "start": "node app05.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "MEAN",
+    "GAMES"
+  ],
+  "author": "Nathnael",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-route": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.8"
+  }
+}
