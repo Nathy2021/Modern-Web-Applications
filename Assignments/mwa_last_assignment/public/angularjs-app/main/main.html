@@ -1,0 +1,31 @@
+<form name="vm.gameForm" ng-submit="vm.addGame()" novalidate>
+ 
+  <div>
+      <label>
+          Name: 
+          <!-- <input name = "name"  id="name" placeholder="Your name" 
+          [(ngModel)] = "user.name" ngModel/> -->
+          <input style ="color:magenta;" required name = "name"  id="name" placeholder="Your name" 
+          ng-model="vm.name" required/>          
+     
+           </label>
+  </div>
+  <div>
+      <label>
+          Username: 
+          <input style ="color: magenta;" required name = "username"  id="username" placeholder="Username" ng-model="vm.userName"/>
+      </label>
+  </div>
+  <div>
+      <label>
+          Password: 
+          <input style ="color:magenta;" required type="password" name = "password"  id="password" placeholder="Password" ng-model="vm.userPassword"/>
+      </label>
+  </div>
+ 
+
+  <div class="col-sm-20"><button ng-click="vm.register()" class="btn-success" >Register</button></div>
+ 
+</form>
+
+

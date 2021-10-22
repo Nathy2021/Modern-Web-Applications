@@ -1,0 +1,36 @@
+
+<form #registrationForm = "ngForm" (ngSubmit) = "onRegister()" novalidate>
+ 
+      <div>
+          <label>
+              Name: 
+              <!-- <input name = "name"  id="name" placeholder="Your name" 
+              [(ngModel)] = "user.name" ngModel/> -->
+              <input required name = "name" class="form-control"  id="name" placeholder="Your name" 
+               ngModel required/>
+
+               <span *ngIf="registrationForm.controls.name.invalid && 
+               (registrationForm.controls.name.dirty || registrationForm.controls.name.touched)">Please provide a name</span>
+         
+               </label>
+      </div>
+      <div>
+          <label>
+              Username: 
+              <input required name = "username" class="form-control"   id="username" placeholder="Username" ngModel/>
+          </label>
+      </div>
+      <div>
+          <label>
+              Password: 
+              <input required type="password" name = "password" class="form-control"   id="password" placeholder="Password" ngModel/>
+          </label>
+      </div>
+     
+  
+      <button class="btn-primary" style="margin-left: 65px;" type="submit" [disabled] = "registrationForm.invalid" >Register</button>
+     
+  </form>
+
+ 
+  

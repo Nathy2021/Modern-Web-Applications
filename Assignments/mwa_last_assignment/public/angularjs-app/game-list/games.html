@@ -1,0 +1,70 @@
+<h1>Mean Games List</h1>
+
+<!-- <ul>
+  <li ng-repeat="game in vm.games ">
+    <a ng-href="#!/games/{{game._id}}">{{game.title}}</a>
+    <br/>
+  </li>
+</ul> -->
+
+<div class="tableClass">
+  <table>
+      <tr>
+      <tr ng-repeat="game in vm.games |filter: enterText ">      
+          <td>{{game.title}}</td>         
+          <td style="padding-right: 20px"> <a ng-href="#!/games/{{game._id}}"> details </a></td>
+          <td style="padding-right: 10px">
+              <a href="#!/games/{{game._id}}" class="rowClassd">     Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>
+
+
+
+<button class="btn-success" ng-click="vm.previous()">Previous page</button><button class="btn-success" ng-click="vm.next()">Next page</button>
+
+<form  name="vm.gameForm" ng-submit="vm.addGame()">
+  <div>
+    <label>
+      Title:
+
+      <input
+        name="title"
+        id="title"
+        placeholder="Game Title"
+        ng-model="vm.gameTitle"
+        required
+      />
+    </label>
+  </div>
+  <div>
+    <label>
+      Price:
+      <input name="price" id="price" placeholder="Price" ng-model="vm.gamePrice" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Year:
+      <input type="year" name="year" id="year" placeholder="Year" ng-model="vm.gameYear" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Min Players:
+      <input type="minPlayers" name="minPlayers"   id="minPlayers"
+      ng-model="vm.minPlayers" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Max Players:
+      <input type="maxPlayers" name="maxPlayers"   id="maxPlayers"
+      ng-model="vm.maxPlayers" />
+    </label>
+  </div>
+
+  <button type="submit" class="btn-success">Add Game</button>
+ 
+</form>

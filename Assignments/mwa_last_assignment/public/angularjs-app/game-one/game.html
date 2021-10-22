@@ -1,0 +1,68 @@
+
+
+<h1> Mean Game: <span>{{vm.game.title}} 
+  
+  </span>   
+
+</h1>
+
+    <div class="form-group row">
+
+    <p>
+        Title: {{vm.game.title}}<br>
+        Price: {{vm.game.price}}<br>
+        Year: {{vm.game.year}}<br>
+        Minimum Players: {{vm.game.minPlayers}}<br>
+        Maximum Players: {{vm.game.maxPlayers}}<br>
+    </p>
+    </div>
+
+
+</p>
+
+<button  class="btn-success" ng-click= vm.deleteGame()>delete</button> 
+
+<h4 ><a ng-href="#!/games">Home</a></h4>
+</br></br>
+
+<form  name="vm.gameForm" ng-submit="vm.updateGame()">
+  <div>
+    <label>
+      Title:
+
+      <input
+        name="title" id="title" placeholder="Game Title" ng-model="vm.gameTitle" required />
+    </label>
+  </div>
+  <div>
+    <label>
+      Price:
+      <input name="price" id="price" placeholder="Price" ng-model="vm.gamePrice" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Year:
+      <input type="year" name="year" id="year" placeholder="Year" ng-model="vm.gameYear" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Min Players:
+      <input type="minPlayers" name="minPlayers"   id="minPlayers"
+      ng-model="vm.gameMinPlayers" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Max Players:
+      <input type="maxPlayers" name="maxPlayers"   id="maxPlayers"
+      ng-model="vm.gameMaxPlayers" />
+    </label>
+  </div>
+
+  <button type="submit" class="btn-success">Update Game</button>
+ 
+</form>
+
+    

@@ -1,0 +1,61 @@
+
+<h1>{{ game.title }}</h1>
+
+<p>
+  Title : {{ game.title }} <br />
+  Price : {{ game.price }} <br />
+  Year : {{ game.year }} <br />  
+  Minimum Players : {{ game.minPlayers }} <br />
+  Maximum Players : {{ game.maxPlayers }} <br />
+</p>
+<br />
+
+<button class="btn-success" (click)="onDelete()">delete</button>
+
+<h4><a routerLink = "/games">  Home </a></h4>
+
+<br /><br />
+<form #updateGame = "ngForm" (ngSubmit) = "onUpdateGame()" novalidate >
+  <div>
+      <label>
+          Title: 
+          <!-- <input name = "name"  id="name" placeholder="Your name" 
+          [(ngModel)] = "user.name" ngModel/> -->
+          <input name = "title"  id="title" placeholder="Game Title" 
+           ngModel required/>
+           <!-- {{registrationForm.controls.name.valid}} -->
+          
+     
+           </label>
+  </div>
+  <div>
+      <label>
+          Price: 
+          <input name = "price"  id="price" placeholder="Price" ngModel/>
+      </label>
+  </div>
+  <div>
+      <label>
+          Year: 
+          <input type="year" name = "year"  id="year" placeholder="Year" ngModel/>
+      </label>
+  </div>
+  <div>
+      <label>
+          Min Players: 
+          <input type="minPlayers" name = "minPlayers"  ngModel/>
+      </label>
+  </div>
+  <div>
+      <label>
+          Max Players: 
+          <input type="maxPlayers" name = "maxPlayers"  ngModel/>
+      </label>
+  </div>
+
+  <button class="btn-success" type="submit" [disabled] = "updateGame.invalid" >Update</button>
+  <button  class="btn-success" type="button" (click)="onClear()">Clear</button>
+</form>
+  
+
+  

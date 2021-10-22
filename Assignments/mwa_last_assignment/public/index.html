@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="meanGames">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <title>MEAN Games</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body>
+  <div ng-view></div>
+  
+
+
+  <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="angularjs-app/app.js"></script>
+    <script src="angularjs-app/game-one/game-one-controller.js"></script>
+    <script src="angularjs-app/game-list/game-list-controller.js"></script>
+    <script src="angularjs-app/gamesFactory/gamesFactory.js"></script>
+    <script src="angularjs-app/UserFactory/userFactory.js"></script>
+    <script src="angularjs-app/main/main-controller.js"></script>
+    <script src="angularjs-app/login/login-controller.js"></script>
+    <script src="angularjs-app/game-rating/game-rating-directive.js"></script>
+
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted text-center">
+        <a href="https://compro.miu.edu" target="_blank"
+          ><img src="./IMG/miu.png" height="60" alt="MIU Compro"
+        /></a>
+        <br />
+        <small class="textblack-50 text-center"
+          >&copy; 2021 Maharishi International University. All Rights
+          Reserved.
+        </small>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

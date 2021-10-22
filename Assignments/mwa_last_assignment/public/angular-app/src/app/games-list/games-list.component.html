@@ -1,0 +1,92 @@
+<h1>Games</h1>
+
+<form #registerGame="ngForm" (ngSubmit)="onAddGame()" novalidate>
+  <div class="row">
+    <div class="col-md-2">
+      <div>
+        <label>
+          Title:
+    
+          <input
+            name="title"
+            id="title"
+            placeholder="Game Title"
+            ngModel
+            required
+          />
+        </label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div>
+        <label>
+          Price:
+          <input name="price" id="price" placeholder="Price" ngModel />
+        </label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div>
+        <label>
+          Year:
+          <input type="year" name="year" id="year" placeholder="Year" ngModel />
+        </label>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-2">
+      <div>
+        <label>
+          Min Players:
+          <input type="minPlayers" name="minPlayers" ngModel />
+        </label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div>
+        <label>
+          Max Players:
+          <input type="maxPlayers" name="maxPlayers" ngModel />
+        </label>
+      </div>
+    </div>
+    <div class="col-md-2">
+     
+  <button class="btn-success" type="submit" [disabled]="registerGame.invalid">
+    Add
+  </button>
+  <button class="btn-success" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+  
+  
+  
+
+</form>
+
+<div class="tableClass" style="margin-top: 10px;">
+  <table class="table" > 
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+      
+        <th scope="col" >Details</th>
+        <th scope="col" >Delete</th>
+      </tr>
+        </thead>
+        <tbody>
+      <tr *ngFor="let game of games ">      
+          <td>{{game.title}}</td>         
+          <td > <a routerLink="/games/{{game._id}}"> details </a></td>
+          <td > <a routerLink="/games/{{game._id}}" class="rowClassd"> Delete</a>
+          </td>
+      </tr>
+        </tbody>
+  </table>
+</div>
+
+<div style="float: right;"><button class="btn-success" (click)="onPrevious()"> {{x1}}</button><button (click)="onNext()" class="btn-success">{{x2}}</button>
+</div>
+
